@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JJS Music | Create. Elevate. Inspire.</title>
+
+  <style>
+    :root {
+      --bg: #050705;
+      --bg-soft: #0b110c;
+      --green: #1DB954;
+      --green-dark: #0f7a36;
+      --green-soft: rgba(29, 185, 84, 0.14);
+      --text: #f4f4f4;
+      --muted: #b9c2ba;
+      --border: rgba(29, 185, 84, 0.25);
+      --card: rgba(10, 18, 12, 0.88);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(29, 185, 84, 0.18), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(29, 185, 84, 0.10), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 7, 5, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 24px 80px;
+    }
+
+    .hero-banner {
+      width: 100%;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+      overflow: hidden;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      margin-top: 44px;
+      max-width: 920px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-content p {
+      font-size: 1.08rem;
+      max-width: 850px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #031006;
+      box-shadow: 0 12px 32px rgba(29, 185, 84, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: #25d366;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    .section-intro {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(12, 22, 14, 0.95), rgba(5, 9, 6, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(29, 185, 84, 0.16), transparent 40%);
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: var(--green);
+      background: var(--green-soft);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .price-note {
+      margin-top: 18px;
+      font-size: 0.92rem;
+      color: #d7ded8;
+    }
+
+    .wide-card {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(8, 14, 9, 0.95), rgba(12, 34, 18, 0.82));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+    }
+
+    .highlight-list {
+      list-style: none;
+      margin-top: 14px;
+    }
+
+    .highlight-list li {
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .highlight-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .release-section {
+      background:
+        linear-gradient(180deg, rgba(29, 185, 84, 0.05), rgba(29, 185, 84, 0.01)),
+        transparent;
+    }
+
+    .release-box {
+      border-left: 4px solid var(--green);
+      padding: 34px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0 24px 24px 0;
+    }
+
+    .contact-strip {
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 54px 28px;
+      background:
+        radial-gradient(circle at center, rgba(29, 185, 84, 0.14), transparent 50%),
+        rgba(255, 255, 255, 0.025);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 34px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-brand {
+      color: var(--green);
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wide-card {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        gap: 12px;
+        font-size: 0.82rem;
+      }
+
+      .hero {
+        padding-bottom: 50px;
+      }
+
+      section {
+        padding: 52px 20px;
+      }
+
+      .card,
+      .wide-card,
+      .release-box {
+        padding: 24px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#" class="brand">JJS MUSIC</a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#epk">EPKs</a>
+        <a href="#release">Release Advice</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-banner">
+        <img src="JJS.jpg" alt="JJS Music banner">
+      </div>
+
+      <div class="hero-content">
+        <div class="eyebrow">Create. Elevate. Inspire.</div>
+
+        <h1>Artist development, production support and release services for serious independent artists.</h1>
+
+        <p>
+          JJS Music is a forward-thinking record producer and independent label dedicated to developing the next generation of artists. Working across multiple genres, JJS partners with emerging talent to shape raw ideas into release-ready records that stand out in today’s competitive music landscape.
+        </p>
+
+        <p>
+          From production and sound development to guidance on releases and artist growth, JJS offers more than just studio time — it provides a platform. Whether you’re an artist finding your sound or ready to take your music to a wider audience, JJS Music is built to support, refine, and elevate your journey.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#services">Explore Services</a>
+          <a class="btn btn-secondary" href="mailto:jjsmusic@atomicmail.io">Contact JJS Music</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-intro">
+        <div class="eyebrow">Services</div>
+        <h2>Professional music services built around real growth.</h2>
+        <p>
+          Choose the support that fits where you are now — from playlist exposure and detailed song reviews to release-ready promotional materials.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <article class="card">
+          <div class="card-content">
+            <span class="service-tag">Playlist Placement</span>
+            <h3>Targeted organic playlist pitching</h3>
+            <p>
+              Building your streaming presence is essential to growing as an artist in today’s landscape, and playlist placement is a key part of that momentum.
+            </p>
+            <p>
+              At JJS Music, we offer targeted playlist pitching services designed to get your tracks in front of the right listeners. We can place your music on our dedicated, genre-focused playlists, helping you reach genuine fans who are actively discovering new sounds.
+            </p>
+            <p>
+              Our approach is built on 100% organic growth — no bots, no shortcuts — just real music lovers engaging with your music the way it should be heard.
+            </p>
+            <a class="btn btn-primary" href="https://paypal.me/JJSMusicServices?country.x=GB&locale.x=en_GB" target="_blank" rel="noopener">
+              Book Playlist Support
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <span class="service-tag">Song Reviews</span>
+            <h3>Honest, useful feedback before release</h3>
+            <p>
+              Get expert, actionable feedback on your music with JJS Music’s professional song review service.
+            </p>
+            <p>
+              Backed by extensive industry experience — from live performance on stages supporting major acts such as Bon Jovi, to producing records for artists worldwide — JJS offers insight that goes far beyond surface-level critique.
+            </p>
+            <p>
+              Whether it’s refining your mix, strengthening your songwriting, or improving your commercial appeal, you’ll receive detailed guidance designed to elevate your track and position it more effectively for release.
+            </p>
+            <a class="btn btn-primary" href="https://paypal.me/JJSMusicServices?country.x=GB&locale.x=en_GB" target="_blank" rel="noopener">
+              Book Song Review
+            </a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-content">
+            <span class="service-tag">Consultation</span>
+            <h3>Tailored support for your next move</h3>
+            <p>
+              For artists looking for more tailored support, JJS Music also offers a range of additional services designed around your specific goals.
+            </p>
+            <p>
+              From social media reviews and growth advice, to one-to-one consultations and expert production guidance, every service is personalised and priced to suit your individual needs.
+            </p>
+            <p>
+              Whatever stage you’re at, JJS is here to help you move forward with clarity and confidence.
+            </p>
+            <a class="btn btn-secondary" href="mailto:jjsmusic@atomicmail.io">
+              Contact Us
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="epk">
+      <div class="wide-card">
+        <div>
+          <div class="eyebrow">Electronic Press Kit</div>
+          <h2>Present your music with impact.</h2>
+          <p>
+            Present your music with impact through a professionally crafted Electronic Press Kit from JJS Music. Designed to give industry professionals everything they need in one place, our EPKs include a polished press release, high-quality imagery, artist biography, and direct audio links to your latest tracks.
+          </p>
+          <p>
+            Built with a clear understanding of what labels, radio, playlist curators, and media outlets look for, each EPK is structured to showcase your sound, story, and brand in the strongest possible light.
+          </p>
+          <p>
+            Whether you’re preparing for a release, pitching to press, or approaching industry contacts, a JJS EPK ensures you present yourself with professionalism and credibility.
+          </p>
+        </div>
+
+        <div>
+          <ul class="highlight-list">
+            <li>Artist biography</li>
+            <li>Professional press release</li>
+            <li>High-quality imagery guidance</li>
+            <li>Direct track and release links</li>
+            <li>Clear industry-facing structure</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://paypal.me/JJSMusicServices?country.x=GB&locale.x=en_GB" target="_blank" rel="noopener">
+              Order an EPK
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="release" class="release-section">
+      <div class="section-intro">
+        <div class="eyebrow">Release Strategy</div>
+        <h2>Release smarter, not just louder.</h2>
+      </div>
+
+      <div class="release-box">
+        <p>
+          One of the biggest mistakes artists make is treating release day as the starting line — in reality, it’s the moment your preparation gets tested.
+        </p>
+
+        <p>
+          To give your track the best chance, you should submit it through Spotify for Artists at least a week before it drops. This isn’t just admin — it opens the door to Release Radar and puts your music in front of Spotify’s editorial team.
+        </p>
+
+        <p>
+          But timing alone won’t carry you. Before you submit, everything needs to be sharp — your branding, your metadata, your story around the track. When you pitch properly, you’re not just uploading a song, you’re giving context that helps Spotify understand where it fits.
+        </p>
+
+        <p>
+          Spotify isn’t focused only on how many followers you have — it’s watching how people react when your track goes live. The first 72 hours are critical. Strong save rates, repeat listens, and real traffic coming from your socials or direct shares all signal that your track is connecting.
+        </p>
+
+        <p>
+          A smaller number of highly engaged listeners will outperform a larger, passive audience every time. If your release creates genuine interest — people saving it, replaying it, sharing it — that’s when the algorithm starts to work in your favour.
+        </p>
+
+        <p>
+          The takeaway is simple: don’t just release music — build a moment around it.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-strip">
+        <div class="eyebrow">Work With JJS</div>
+        <h2>Ready to move your music forward?</h2>
+        <p>
+          For bookings, questions, custom support or tailored artist services, contact JJS Music directly.
+        </p>
+
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:jjsmusic@atomicmail.io">
+            Contact Us
+          </a>
+          <a class="btn btn-secondary" href="https://paypal.me/JJSMusicServices?country.x=GB&locale.x=en_GB" target="_blank" rel="noopener">
+            Pay for a Service
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">JJS MUSIC</div>
+    <div>Create. Elevate. Inspire. Music | Artists | Future</div>
+  </footer>
+
+</body>
+</html>
