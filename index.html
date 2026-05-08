@@ -325,6 +325,77 @@ h1 {
       letter-spacing: 2px;
       margin-bottom: 8px;
     }
+    .ad-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 45px 24px;
+}
+
+.ad-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(12, 22, 14, 0.95), rgba(5, 9, 6, 0.95));
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+}
+
+.ad-image {
+  width: 144px;
+  height: 144px;
+  flex: 0 0 144px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.ad-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ad-content {
+  flex: 1;
+}
+
+.ad-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.ad-content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.ad-content p {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 700px) {
+  .ad-card {
+    flex-direction: column;
+  }
+
+  .ad-image {
+    width: 100%;
+    max-width: 144px;
+    height: 144px;
+  }
+}
 
     @media (max-width: 900px) {
       .services-grid {
@@ -556,6 +627,25 @@ h1 {
           The takeaway is simple: don’t just release music — build a moment around it.
         </p>
       </div>
+
+      <section class="ad-section" id="featured-promo">
+  <div class="ad-card">
+    <div class="ad-image">
+      <img src="country-jai-could-this-be.png" alt="Country Jai - Could This Be artwork">
+    </div>
+
+    <div class="ad-content">
+      <span class="ad-label">Featured Promo</span>
+      <h3>Country Jai – Could This Be...</h3>
+      <p>Listen to Country Jai - Could This Be... on Spotify.</p>
+
+      <a class="btn btn-primary" href="https://open.spotify.com/track/3tmeDPVE05LTjTnUbIz33w?si=723f4fea103f4593" target="_blank" rel="noopener">
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+</section>
+      
     </section>
 <section id="groover">
   <div class="contact-strip">
