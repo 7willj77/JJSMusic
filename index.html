@@ -385,6 +385,40 @@ h1 {
   margin-bottom: 18px;
 }
 
+.advertise-banner {
+  margin-top: 24px;
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(29, 185, 84, 0.35);
+  background:
+    radial-gradient(circle at top right, rgba(29, 185, 84, 0.20), transparent 35%),
+    linear-gradient(135deg, rgba(12, 34, 18, 0.95), rgba(5, 9, 6, 0.95));
+  text-align: center;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+}
+
+.advertise-banner h3 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 12px;
+}
+
+.advertise-banner p {
+  max-width: 820px;
+  margin: 0 auto 20px;
+}
+
+@media (max-width: 700px) {
+  .ad-card {
+    flex-direction: column;
+  }
+
+  .ad-image {
+    width: 100%;
+    max-width: 144px;
+    height: 144px;
+  }
+}
+
 @media (max-width: 700px) {
   .ad-card {
     flex-direction: column;
@@ -628,14 +662,22 @@ h1 {
         </p>
       </div>
 
-      <section class="ad-section" id="featured-promo">
+<section class="ad-section" id="featured-promo">
+
+  <div class="section-intro">
+    <div class="eyebrow">Featured Promo</div>
+    <h2>Featured music promotion</h2>
+    <p>
+      Discover promoted tracks, artist campaigns and music services from the JJS Music network.
+    </p>
+  </div>
+
   <div class="ad-card">
     <div class="ad-image">
       <img src="country-jai-could-this-be.png" alt="Country Jai - Could This Be artwork">
     </div>
 
     <div class="ad-content">
-      <span class="ad-label">Featured Promo</span>
       <h3>Country Jai – Could This Be...</h3>
       <p>Listen to Country Jai - Could This Be... on Spotify.</p>
 
@@ -644,6 +686,20 @@ h1 {
       </a>
     </div>
   </div>
+
+</section>
+
+        <div class="advertise-banner">
+    <h3>Advertise with us for just £14.99 for 3 months</h3>
+    <p>
+      Put your music service, release or artist campaign in front of independent artists actively looking for playlist placement, reviews, EPKs and release support.
+    </p>
+
+    <a class="btn btn-secondary" href="consultation-form.html">
+      Advertise With Us
+    </a>
+  </div>
+
 </section>
       
     </section>
